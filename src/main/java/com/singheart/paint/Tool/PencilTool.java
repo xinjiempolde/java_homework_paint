@@ -14,14 +14,20 @@ public class PencilTool extends AbstractTool {
 
     public static Tool getInstance(PaintFrame paintFrame) {
         if (tool == null) {
-            tool = new PencilTool(paintFrame);
+            tool = new PencilTool(paintFrame, "img/pencilcursor.gif");
         }
         return tool;
+    }
+
+    public PencilTool(PaintFrame paintFrame, String cursorPath) {
+        super(paintFrame, cursorPath);
     }
 
     public PencilTool(PaintFrame paintFrame) {
         super(paintFrame);
     }
+
+
 
 
     @Override
@@ -34,15 +40,16 @@ public class PencilTool extends AbstractTool {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        createShape(mPressedPoint, new Point(e.getX(), e.getY()));
-        mPressedPoint = new Point(e.getX(), e.getY());
+        createShape(mPressedX, mPressedY, e.getX(), e.getY());
+        mPressedX = e.getX();
+        mPressedY = e.getY();
         paintFrame.repaintDrawPanel();
     }
 
     @Override
-    public void createShape(Point start, Point end) {
+    public void createShape(int x1, int y1, int x2, int y2) {
         PencilShape pencilShape = (PencilShape)popShape();
-        pencilShape.add(new Line(start.x, start.y, end.x, end.y));
+        pencilShape.add(new Line(x1, y1, x2, y2, color, width));
         paintFrame.getShapes().add(pencilShape);
     }
 

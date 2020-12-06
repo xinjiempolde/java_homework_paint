@@ -7,6 +7,7 @@ import com.singheart.paint.shape.Shape;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.PrintWriter;
 
 public class RectTool extends AbstractTool {
     private static RectTool tool = null;
@@ -26,24 +27,19 @@ public class RectTool extends AbstractTool {
     public void mousePressed(MouseEvent e) {
         super.mousePressed(e);
         //创建一个空物体，供mouseDragged弹出
-        paintFrame.getShapes().add(new Shape() {
-            @Override
-            public void drawShape(Graphics g) {
-
-            }
-        });
+        paintFrame.getShapes().add(new Shape(){});
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
         popShape();
-        createShape(mPressedPoint, new Point(e.getX(), e.getY()));
+        createShape(mPressedX, mPressedY, e.getX(), e.getY());
         paintFrame.repaintDrawPanel();
     }
 
     @Override
-    public void createShape(Point start, Point end) {
-        Rect rect = new Rect(start, end);
+    public void createShape(int x1, int y1, int x2, int y2) {
+        Rect rect = new Rect(x1, y1, x2, y2, color, width);
         paintFrame.getShapes().add(rect);
         paintFrame.repaintDrawPanel();
     }

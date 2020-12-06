@@ -9,20 +9,20 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class EraserTool extends AbstractTool {
+public class BrushTool extends AbstractTool {
     private static Tool tool = null;
 
     public static Tool getInstance(PaintFrame paintFrame) {
         if (tool == null) {
-            tool = new EraserTool(paintFrame, "img/erasercursor.gif");
+            tool = new BrushTool(paintFrame, "img/brushcursor.gif");
         }
         return tool;
     }
 
-    private EraserTool(PaintFrame paintFrame, String cursorPath) {
+    private BrushTool(PaintFrame paintFrame, String cursorPath) {
         super(paintFrame, cursorPath);
     }
-    private EraserTool(PaintFrame paintFrame) {
+    private BrushTool(PaintFrame paintFrame) {
         super(paintFrame);
     }
 
@@ -46,7 +46,7 @@ public class EraserTool extends AbstractTool {
     @Override
     public void createShape(int x1, int y1, int x2, int y2) {
         PencilShape pencilShape = (PencilShape)popShape();
-        pencilShape.add(new Line(x1, y1, x2, y2, Color.WHITE, 8));
+        pencilShape.add(new Line(x1, y1, x2, y2, color, 8));
         paintFrame.getShapes().add(pencilShape);
     }
 

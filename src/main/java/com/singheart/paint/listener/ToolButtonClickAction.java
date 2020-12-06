@@ -1,5 +1,6 @@
-package com.singheart.paint;
+package com.singheart.paint.listener;
 
+import com.singheart.paint.PaintFrame;
 import com.singheart.paint.Tool.Tool;
 import com.singheart.paint.Tool.ToolFactory;
 

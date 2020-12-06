@@ -33,6 +33,21 @@ public class QuickKeyListener implements AWTEventListener
                 if (key.isControlDown() && key.getKeyCode() == KeyEvent.VK_Y) {
                     paintFrame.getService().redo(paintFrame);
                 }
+
+                // 保存文件快捷键
+                if (key.isControlDown() && key.getKeyCode() == KeyEvent.VK_S) {
+                    paintFrame.getService().savaFile(paintFrame);
+                }
+
+                // 打开文件快捷键
+                if (key.isControlDown() && key.getKeyCode() == KeyEvent.VK_O) {
+                    paintFrame.getService().openFile(paintFrame);
+                }
+
+                // 清空
+                if (key.isControlDown() && key.getKeyCode() == KeyEvent.VK_L) {
+                    paintFrame.getService().clear(paintFrame);
+                }
             }
         }
     }

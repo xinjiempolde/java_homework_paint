@@ -35,13 +35,13 @@ public class CircleTool extends AbstractTool {
     @Override
     public void mouseDragged(MouseEvent e) {
         popShape();
-        createShape(mPressedPoint, new Point(e.getX(), e.getY()));
+        createShape(mPressedX, mPressedY, e.getX(), e.getY());
         paintFrame.repaintDrawPanel();
     }
 
     @Override
-    public void createShape(Point start, Point end) {
-        Circle circle = new Circle(start, end);
+    public void createShape(int x1, int y1, int x2, int y2) {
+        Circle circle = new Circle(x1, y1, x2, y2, color, width);
         paintFrame.getShapes().add(circle);
         paintFrame.repaintDrawPanel();
     }

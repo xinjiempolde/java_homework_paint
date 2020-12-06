@@ -1,29 +1,35 @@
 package com.singheart.paint.shape;
 
+import com.singheart.paint.Tool.AbstractTool;
+
 import java.awt.*;
+import java.io.FileReader;
+import java.io.PrintWriter;
 
 public class Circle extends Shape {
-    private Point startPoint;
-    private Point stopPoint;
-    private int width;
-    private int height;
-    private int x, y;
 
-    public Circle(Point startPoint, Point stopPoint) {
-        this.startPoint = startPoint;
-        this.stopPoint = stopPoint;
-        //计算椭圆的宽和高
-        this.width = Math.abs(startPoint.x - stopPoint.x);
-        this.height = Math.abs(startPoint.y - stopPoint.y);
+    public Circle(int x1, int y1, int x2, int y2, Color color, int width) {
+        super(x1, y1, x2, y2, color, width);
+    }
+    public Circle(int x1, int y1, int x2, int y2) {
+        super(x1, y1, x2, y2);
+    }
 
-        //计算椭圆最左上角的坐标
-        this.x = Math.min(startPoint.x, stopPoint.x);
-        this.y = Math.min(startPoint.y, stopPoint.y);
+    public Circle(FileReader fileReader) {
+        super(fileReader);
     }
     @Override
     public void drawShape(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
+        g2d.setStroke(new BasicStroke(linewidth));
+        g2d.setColor(color);
         g2d.drawOval(x, y, width, height);
+    }
+
+    @Override
+    public void writeFile(PrintWriter printWriter) {
+        printWriter.print("C");
+        super.writeFile(printWriter);
     }
 }
 

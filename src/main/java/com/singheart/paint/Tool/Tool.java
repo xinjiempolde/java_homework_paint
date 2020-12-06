@@ -8,6 +8,9 @@ public interface Tool {
     public static final String RECT_TOOL = "RectTool";
     public static final String CIRCEL_TOOL = "CircleTool";
     public static final String ERASER_TOOL = "EraserTool";
+    public static final String BRUSH_TOOL = "BrushTool";
+    public static final String ATOMIZER_TOOL = "AtomizerTool";
+    public static final String WORD_TOOL = "WordTool";
 
     /**
      * 处理鼠标按下
